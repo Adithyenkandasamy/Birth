@@ -1,0 +1,28 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="bg-black">
+    <ActionBar title="Birthday Countdown" class="bg-pink-500 text-white" />
+    
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Countdown Timer -->
+            <Label text="{{ countdownText }}" class="text-3xl text-center text-pink-500 font-bold mb-4" textWrap="true" />
+            
+            <!-- Current Image -->
+            <Image src="{{ currentImage }}" class="w-full h-64 rounded-lg mb-4" stretch="aspectFill" 
+                   loaded="{{ onImageLoaded }}" class="{{ imageAnimation }}" />
+            
+            <!-- Birthday Message -->
+            <Label text="{{ birthdayMessage }}" class="text-2xl text-center text-white mb-4" 
+                   textWrap="true" class="{{ messageAnimation }}" />
+            
+            <!-- Image Gallery -->
+            <WrapLayout class="justify-center">
+                <Repeater items="{{ images }}">
+                    <Repeater.itemTemplate>
+                        <Image src="{{ $value }}" class="w-24 h-24 m-1 rounded" stretch="aspectFill" 
+                               tap="{{ $parent.onImageTap }}" />
+                    </Repeater.itemTemplate>
+                </WrapLayout>
+            </WrapLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>
